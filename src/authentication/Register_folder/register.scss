@@ -1,0 +1,60 @@
+.centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-col{
+    flex-direction: column;
+}
+
+.boss{
+    min-height: 100vh;
+    .logo{
+        width: 30%;
+        min-height: 100vh;
+        background-color: white;
+    }
+    .form{
+        width: 100%;
+        min-height: 100vh;
+        background-color: black;
+        .items{
+            padding: 3.5rem;
+            border-radius: 5px;
+            background-color: white;
+            width: 50%;
+            position: relative;
+            .notesman{
+                position: absolute;
+                top: 0;
+                right: 3.5rem;
+                width: 25%;
+            }
+            .first{
+                font-size: 32px;
+                font-weight: 500;
+                margin-bottom: 0;
+            }
+            .second{
+                font-size: 14px;
+                letter-spacing: 0.5px;
+                color: #5f5f5fef;
+            }
+            .signup{
+                .desc {
+                        font-size: 14px;
+                        font-weight: 400;
+                        letter-spacing: 0.5px;
+                        margin-top: 1rem;
+                        color: #5f5f5fef;
+                        a {
+                            margin-left: 0.5rem;
+                            color: black;
+                            font-weight: bold;
+                        }
+                    }
+            }
+        }
+    }
+}
