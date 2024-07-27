@@ -4,12 +4,27 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import "./loginform.scss";
 import loginUser from "./loginHelper";
+import { useDispatch } from "react-redux";
+import { setAccessToken } from "./../../actions.js";
 import { Eye, EyeOff } from "lucide-react";
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS for react-toastify
-
+import { useCookies } from "react-cookie";
 export default function LoginForm() {
   const [passwordValidation, setPasswordValidation] = useState(null);
   const [showPass, setShowPass] = useState(false);
+  const [cookie, setCookie] = useCookies(["refresh_token"]);
+  const dispatch = useDispatch();
+  const setRefreshToken = (refreshToken) => {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + 30 * 24 * 60 * 60 * 1000); // Set expiration to 30 days
+    setCookie("refreshToken", refreshToken, {
+      path: "/",
+      httpOnly: true,
+      secure: true,
+      sameSite: "strict", // Optional, for additional security
+      expires,
+    });
+  };
   const {
     register,
     formState: { errors },
@@ -25,6 +40,8 @@ export default function LoginForm() {
       });
       console.log(response.message);
     } else {
+      dispatch(setAccessToken(response.access_token));
+      setRefreshToken(response.refresh_token);
       reset();
       setPasswordValidation(null);
       toast.success("Login successful!", {
