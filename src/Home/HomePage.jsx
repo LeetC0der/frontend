@@ -5,11 +5,12 @@ import { LogOut } from "lucide-react";
 import HomeOptions from "./HomeOptions";
 import TaskManager from "../Task_manager/TaskManager";
 import Setting from "../settings/Setting";
+import { useNavigate } from "react-router-dom";
 export default function HomePage() {
+  const navigate = useNavigate();
   const [option, setoption] = useState(null);
   const findSelectedoption = (data) => {
     setoption(data);
-    console.log(data);
     return;
   };
   return (
@@ -17,7 +18,14 @@ export default function HomePage() {
       <div className="nav flex-col">
         <img className="img" src={blackLogo} alt="" />
         <HomeOptions selectedOption={findSelectedoption} />
-        <LogOut className="logout" />
+        <span
+          onClick={() => {
+            navigate("/");
+          }}
+          className="logout"
+        >
+          <LogOut className="" />
+        </span>
       </div>
       <div className="render-template">
         {option && option === "task" ? <TaskManager /> : <></>}

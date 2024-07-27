@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { act, useState } from "react";
 import { PanelsTopLeft, Settings } from "lucide-react";
 import "./homeoptions.scss";
 export default function HomeOptions({ selectedOption }) {
@@ -8,23 +8,23 @@ export default function HomeOptions({ selectedOption }) {
       style={{ marginTop: "1rem", alignItems: "center" }}
       className="flex-col"
     >
-      <span className={active === "task" ? "bg" : ""}>
-        <PanelsTopLeft
-          className={active === "task" ? "icons active" : "icons"}
-          onClick={() => {
-            selectedOption("task");
-            setactive("task");
-          }}
-        />
+      <span
+        onClick={() => {
+          selectedOption("task");
+          setactive("task");
+        }}
+        className={active === "task" ? "active" : "bg"}
+      >
+        <PanelsTopLeft />
       </span>
-      <span className={active === "settings" ? "bg" : ""}>
-        <Settings
-          className={active === "settings" ? "icons active" : "icons"}
-          onClick={() => {
-            setactive("settings");
-            selectedOption("settings");
-          }}
-        />
+      <span
+        onClick={() => {
+          setactive("settings");
+          selectedOption("settings");
+        }}
+        className={active === "settings" ? "active" : "bg"}
+      >
+        <Settings />
       </span>
     </div>
   );

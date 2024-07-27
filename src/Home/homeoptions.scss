@@ -1,15 +1,25 @@
-.icons{
-    margin: 1rem 0;
+
+.bg{
+    color: #efefef;
+    margin-bottom: 1rem;
+    transition: all ease-in-out 0.3s;
+    padding: 0.5rem;
     cursor: pointer;
 }
 
+// plae blue #f4faff
+
 .active{
-    margin: 0;
+    color:black;
+    background-color: #efefef;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
 }
 
-.bg{
-    padding: 0.5rem;
-    background-color: white;
+.bg:hover{
+    color:black;
+    background-color: #efefef;
     border-radius: 5px;
-    color: black;
 }

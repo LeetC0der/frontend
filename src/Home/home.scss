@@ -30,7 +30,15 @@
         .logout{
             position: absolute;
             bottom: 1rem;
-            right: 1.5rem;
+            right: 1rem;
+            transition: all ease-in-out 0.3s;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .logout:hover{
+            color: black;
+            background-color: #f0f0f0;
         }
     }
     .render-template{

@@ -1,0 +1,20 @@
+.tms{
+    display: flex;
+    padding:  0 0.5rem;
+    min-height: 95vh;
+    .project{
+        width: 30%;
+        min-height: 90vh;
+        margin-right: 0.5rem;
+    }
+    .tasks{
+        width: 100%;
+        min-height: 90vh;
+    }
+}
+
+.radius-and-bg{
+    margin: 0.5rem 0;
+    background-color: #efefef;
+    border-radius: 5px;
+}
