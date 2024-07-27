@@ -2,30 +2,36 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff } from "lucide-react";
 import { toast, ToastContainer } from "react-toastify";
+import { useNavigate } from "react-router-dom"; // Correct import for navigation
 import "./registerForm.scss";
 import registerUser from "./registerHelper";
 
 export default function RegisterForm() {
-  const [passwordValidation, setPasswordValidation] = useState(null);
+  const [passwordValidation, setPasswordValidation] = useState("");
   const [showPass, setShowPass] = useState(false);
+  const navigate = useNavigate(); // Use useNavigate hook for redirection
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (data) => {
     const response = await registerUser(data);
-    if (response.status !== 200) {
+    if (response.status !== 201) {
       toast.error(response.response.data.message, {
         position: "top-right",
       });
       console.log(response.message);
     } else {
       reset();
-      toast.success("Test", {
+      toast.success(response.data.message, {
         position: "top-right",
       });
+      setTimeout(() => {
+        navigate("/"); // Use navigate function for redirection
+      }, 5000);
       console.log(response);
     }
   };
@@ -34,7 +40,6 @@ export default function RegisterForm() {
     setPasswordValidation(event.target.value);
   };
 
-  // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPass((prev) => !prev);
   };
@@ -46,9 +51,7 @@ export default function RegisterForm() {
           <p className="name">UserName</p>
           <input
             className="inputs"
-            {...register("username", {
-              required: true,
-            })}
+            {...register("username", { required: true })}
             type="text"
           />
           {errors.username?.type === "required" && (
@@ -78,13 +81,10 @@ export default function RegisterForm() {
             <input
               id="regpass"
               className="inputs"
-              {...register("password", {
-                required: true,
-              })}
+              {...register("password", { required: true })}
               type={showPass ? "text" : "password"}
               onChange={valid_pass}
             />
-            {/* Toggle password visibility */}
             {!showPass && passwordValidation ? (
               <EyeOff onClick={togglePasswordVisibility} className="icons" />
             ) : passwordValidation ? (
