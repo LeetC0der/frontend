@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import "./loginform.scss";
 import loginUser from "./loginHelper";
 import { Eye, EyeOff } from "lucide-react";
@@ -15,7 +16,7 @@ export default function LoginForm() {
     reset,
     handleSubmit,
   } = useForm();
-
+  const navigate = useNavigate();
   const formData = async (data) => {
     const response = await loginUser(data);
     if (response.response && response.response.status !== 200) {
@@ -29,6 +30,9 @@ export default function LoginForm() {
       toast.success("Login successful!", {
         position: "top-right",
       });
+      setTimeout(() => {
+        navigate("/home");
+      }, 5000);
       console.log(response);
     }
   };

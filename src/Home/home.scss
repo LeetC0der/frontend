@@ -1,0 +1,43 @@
+.centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.home{
+    min-height: 100vh;
+    width: 100%;
+    padding: 1rem;
+    background-color: #f0f0f0;
+    .nav{
+        width: 5rem;
+        min-height: 95vh;
+        background-color: black;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        color: #f0f0f0;
+        position: relative;
+        .img{
+            margin-top: 1rem;
+            width: 100%;
+        }
+        .logout{
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+        }
+    }
+    .render-template{
+        width: 100%;
+        min-height: 95vh;
+        background-color: #f9f9f9;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
