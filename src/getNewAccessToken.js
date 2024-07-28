@@ -10,7 +10,7 @@ export const useGetNewToken = () => {
         try {
             const flaskapi = import.meta.env.VITE_API_FLASKAPI;
             const response = await axios.post(
-                `${flaskapi}/refresh`,
+                `${flaskapi}/refresh`,{},
                 {
                     headers: {
                         Authorization: `Bearer ${cookies.refresh_token}`,

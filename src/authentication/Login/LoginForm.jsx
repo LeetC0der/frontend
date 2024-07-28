@@ -38,8 +38,8 @@ export default function LoginForm() {
       toast.error(response.response.data.message, {
         position: "top-right",
       });
-      console.log(response.message);
     } else {
+      sessionStorage.setItem("user_profile", JSON.stringify(response.userInfo));
       dispatch(setAccessToken(response.access_token));
       setRefreshToken(response.refresh_token);
       reset();
@@ -50,7 +50,6 @@ export default function LoginForm() {
       setTimeout(() => {
         navigate("/home");
       }, 5000);
-      console.log(response);
     }
   };
 
