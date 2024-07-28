@@ -12,9 +12,9 @@ export const getTaks = async (accessToken) => {
                 'Authorization': `Bearer ${accessToken}`
             }
         })
-        console.log(response.data);
+        return response;
     } catch (e) {
-        console.log(e);
+        return e;
     }
 }
 

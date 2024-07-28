@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./prj.scss";
 import { useSelector } from "react-redux";
 import { useGetNewToken } from "../../getNewAccessToken";
-import fetchUserProjects from "./ProjectApis";
+import fetchUserProjects, { addProjects } from "./ProjectApis";
 import { getTaks } from "../Notes";
+import AddProject from "./addPrj/AddProject";
+import ShowProject from "./show_projects/ShowProject";
 
 export default function Project() {
   const getNewToken = useGetNewToken();
@@ -16,6 +18,10 @@ export default function Project() {
       }
       if (accessToken) {
         const projects = await fetchUserProjects(accessToken);
+        sessionStorage.setItem(
+          "userProjects",
+          JSON.stringify(projects.data.project_list)
+        );
         const tasks = await getTaks(accessToken);
         console.log(projects, tasks);
       }
@@ -23,5 +29,11 @@ export default function Project() {
     fetchProjects();
   }, [accessToken, getNewToken]);
 
-  return <div className="prj">Project</div>;
+  return (
+    <div className="prj centered">
+      <h1 className="head">Workspace</h1>
+      <AddProject accessToken={accessToken} />
+      <ShowProject />
+    </div>
+  );
 }

@@ -1,0 +1,12 @@
+.parent{
+    margin-top: 0.5rem;
+    .child{
+        display: flex;
+        flex-direction: column;
+        .prj-int{
+            background: none;
+            outline: none;
+            padding: 0.5rem;
+        }
+    }
+}

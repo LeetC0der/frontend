@@ -1,0 +1,34 @@
+.sp{
+    position: relative;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    .sp-chld{
+        padding: 0.5rem;
+        position: relative;
+        .sp-search{
+            position: absolute;
+            top : 0.5rem;
+            left : 0.5rem;
+            width : 1rem;
+            color: #b2a3af;
+        }
+        .sp-int{
+            padding: 0.5rem 1.5rem;
+            background: none;
+            outline: none;
+        }
+    }
+}
+
+.sp::after{
+    content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0.01rem;
+        /* Height of the line */
+        background-color: #b2a3af;
+        /* Color of the line */
+        /* Thin shadow to simulate a line */
+}
