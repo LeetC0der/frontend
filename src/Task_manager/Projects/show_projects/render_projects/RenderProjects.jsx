@@ -1,13 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./renderproject.scss";
 
+const renderDateandtime = (data) => {
+  const array = data.split(" ");
+  return (
+    <div className="holder">
+      <span className="date">{array.slice(0, 3)}</span>
+      <span>{array[4]}</span>
+    </div>
+  );
+};
+
 const renderProjects = (data) => {
   return (
     <div>
       {data.map((itm, idx) => (
-        <div key={idx}>
-          <h1>{itm.title}</h1>
-          <span>Created: {itm.created_at}</span>
+        <div className="each-project" key={idx}>
+          <div className="header">
+            <h1 className="title">{itm.title}</h1>
+            {renderDateandtime(itm.created_at)}
+          </div>
         </div>
       ))}
     </div>

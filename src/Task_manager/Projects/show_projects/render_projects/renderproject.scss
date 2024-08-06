@@ -1,6 +1,36 @@
-.rp-root{
-    margin-top: 1rem;
-    padding: 0.5rem;
-    height: 65vh;
-    overflow-y: auto;
+.rp-root {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  height: 65vh;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.each-project {
+  padding: 0.5rem;
+  background-color: #d7d5dd;
+  margin-bottom: 0.5rem;
+  border-radius: 5px;
+  .header {
+    .title {
+      font-weight: 500;
+      font-size: 14px;
+    }
+    .holder {
+      color: #5f5f5fef;
+      font-size: 14px;
+      .date {
+        margin-right: 0.5rem;
+      }
+    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  cursor: pointer;
+  transition: all ease-in-out 0.3s;
+}
+
+.each-project:hover {
+  background-color: #c8c6d1;
 }
